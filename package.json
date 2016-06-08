@@ -1,0 +1,32 @@
+
+{
+	"name": "range-iterable",
+	"description": "Python-like range class for JavaScript",
+	"version": "0.0.0",
+	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
+	"contributors": [
+		"Hoàng Văn Khải <hvksmr1996@gmail.com>"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ksxnodemodules/range-iterable.git"
+	},
+	"engines": {
+		"node": ">= 6.0.0"
+	},
+	"dependencies": {
+		"x-iterable-base": "^1.0.2"
+	},
+	"main": "index.js",
+	"keywords": [
+		"range",
+		"range-iterable",
+		"python-range",
+		"count-number"
+	],
+	"bugs": {
+		"url": "https://github.com/ksxnodemodules/range-iterable/issues"
+	},
+	"homepage": "https://github.com/ksxnodemodules/range-iterable#readme"
+}
