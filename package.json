@@ -2,7 +2,7 @@
 {
 	"name": "range-iterable",
 	"description": "Python-like range class for JavaScript",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
 	"contributors": [
 		"Hoàng Văn Khải <hvksmr1996@gmail.com>"
