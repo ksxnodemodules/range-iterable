@@ -34,6 +34,6 @@ console.log({x0, x1, x2, x3});
 var x0 = range(5).reverse();
 var x1 = range(5).shift(2);
 var x2 = range(5).multiply(3);
-var x4 = range(5).reverse().shift(2).multiply(3);
+var x3 = range(5).reverse().shift(2).multiply(3);
 console.log({x0, x1, x2, x3});
 ```
