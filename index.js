@@ -2,12 +2,12 @@
 ((module) => {
   'use strict'
 
-  var {XIterable, Root} = require('x-iterable-base')
+  const {XIterable, Root} = require('x-iterable-base')
 
-  var {iterator} = Symbol
+  const {iterator} = Symbol
 
-  var createYielder = (base, callback) => {
-    var iterable = base.map(callback)
+  const createYielder = (base, callback) => {
+    const iterable = base.map(callback)
     return {
       [iterator]: () => iterable[iterator](),
       __proto__: base
@@ -30,7 +30,7 @@
         },
 
         reverse () {
-          var endMinusOne = end - 1
+          const endMinusOne = end - 1
           return createYielder(this, value => endMinusOne - value)
         },
 
