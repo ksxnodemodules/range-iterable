@@ -1,9 +1,7 @@
 
 ((module) => {
   'use strict'
-
   const {XIterable, Root} = require('x-iterable-base')
-
   const {iterator} = Symbol
 
   const createYielder = (base, callback) => {
@@ -61,6 +59,5 @@
 	}
 
   class Range extends RangeIterable {}
-
   module.exports = Range
 })(module)
