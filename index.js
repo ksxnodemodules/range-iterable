@@ -24,14 +24,14 @@
       return begin <= end && {
 
         * [iterator] () {
-          for (let i = begin; i != end; ++i) {
+          for (let i = begin; i !== end; ++i) {
             yield i
           }
         },
 
         reverse () {
-          var end_s1 = end - 1
-          return createYielder(this, value => end_s1 - value)
+          var endMinusOne = end - 1
+          return createYielder(this, value => endMinusOne - value)
         },
 
         __proto__: this
