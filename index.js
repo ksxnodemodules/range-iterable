@@ -1,71 +1,66 @@
 
 ((module) => {
-	'use strict';
+  'use strict'
 
-	var {XIterable, Root} = require('x-iterable-base');
+  var {XIterable, Root} = require('x-iterable-base')
 
-	var {iterator} = Symbol;
+  var {iterator} = Symbol
 
-	var createYielder = (base, callback) => {
-		var iterable = base.map(callback);
-		return {
-			[iterator]: () => iterable[iterator](),
-			__proto__: base
-		};
-	};
+  var createYielder = (base, callback) => {
+    var iterable = base.map(callback)
+    return {
+      [iterator]: () => iterable[iterator](),
+      __proto__: base
+    }
+  }
 
-	class RangeIterable extends XIterable(Root) {
+  class RangeIterable extends XIterable(Root) {
+    constructor (begin, end) {
+      super()
 
-		constructor(begin, end) {
+      begin >>= 0
+      end >>= 0
 
-			super();
+      return begin <= end && {
 
-			begin >>= 0;
-			end >>= 0;
+        * [iterator] () {
+          for (let i = begin; i != end; ++i) {
+            yield i
+          }
+        },
 
-			return begin <= end && {
+        reverse () {
+          var end_s1 = end - 1
+          return createYielder(this, value => end_s1 - value)
+        },
 
-				* [iterator]() {
-					for (let i = begin; i != end; ++i) {
-						yield i;
-					}
-				},
+        __proto__: this
 
-				reverse() {
-					var end_s1 = end - 1;
-					return createYielder(this, value => end_s1 - value);
-				},
+      }
+    }
 
-				__proto__: this
+    * [iterator] () {}
 
-			};
+    shift (delta) {
+      return createYielder(this, value => value + delta)
+    }
 
-		}
+    multiply (factor) {
+      return createYielder(this, value => value * factor)
+    }
 
-		* [iterator]() {}
-
-		shift(delta) {
-			return createYielder(this, value => value + delta);
-		}
-
-		multiply(factor) {
-			return createYielder(this, value => value * factor);
-		}
-
-		static range(...args) {
-			switch (args.length) {
-				case 1:
-					return new Range(0, args[0]);
-				case 2:
-					return new Range(...args);
-			}
-			throw new RangeError('Number of provided arguments must be 1 or 2');
-		}
-
+    static range (...args) {
+      switch (args.length) {
+        case 1:
+          return new Range(0, args[0])
+        case 2:
+          return new Range(...args)
+      }
+      throw new RangeError('Number of provided arguments must be 1 or 2')
+    }
 	}
 
-	class Range extends RangeIterable {}
+  class Range extends RangeIterable {}
 
-	module.exports = Range;
-
-})(module);
+  module.exports = Range
+})(module)
